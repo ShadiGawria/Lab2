@@ -6,6 +6,7 @@ using System.Threading.Tasks;
 
 namespace Lab2
 {
+    // Random class to return (0-4) ,so program can decide if the user  guessed the score right or not
     class RandomGenerator
     {
         public Random rand = new Random();

@@ -21,22 +21,26 @@ namespace Lab2
     /// </summary>
     public partial class MainWindow : Window
     {
-
+        //Method to return the worl(winorlose)variable depends on the user input 
         public int winorlose()
         {
-
-            int y1;
-            if (Winorlose.Text.ToUpper().Equals("W") || Winorlose.Text.ToUpper() == "WIN")
+            
+            int worl;
+            if (Winorlose.Text.ToUpper().Equals("W") || Winorlose.Text.ToUpper().Equals("WIN"))
             {
-                y1 = 1;
-                return y1;
+                worl = 1;
+                return worl;
             }
-            else if (Winorlose.Text.ToUpper().Equals("L") || Winorlose.Text.ToUpper() == "LOSE")
+            else if (Winorlose.Text.ToUpper().Equals("L") || Winorlose.Text.ToUpper().Equals("LOSE"))
             {
-                y1 = 0;
-                return y1;
+                worl = 0;
+                return worl;
             }
-
+            else if (Winorlose.Text.ToUpper().Equals("D") || Winorlose.Text.ToUpper().Equals("DRAW"))
+            {
+                worl = 2;
+                return worl;
+            }
             else
 
 
@@ -57,17 +61,19 @@ namespace Lab2
 
         private void Close_Click(object sender, RoutedEventArgs e)
         {
+            // Close button
             this.Close();
         }
         private void Clear_Click(object sender, RoutedEventArgs e)
         {
+            // clear the Listbox button
             Listbox.Items.Clear();
         }
         public void Button_Click(object sender, RoutedEventArgs e)
         {
             if (this.Name.Text != "" && this.Teamname1.Text != "" && this.Winorlose.Text != "" && this.Score.Text != "" && this.Money.Text != "")
             {
-
+                // Let's play Button
                 Listbox.Items.Add("Your name is:" + " " + Name.Text);
                 Listbox.Items.Add("Your favorit team is: " + " " + Teamname1.Text);
                 Listbox.Items.Add("Your are betting " + Teamname1.Text + " is going to" + " " + Winorlose.Text + " and score" + " " + Score.Text + " " + "Goals");
@@ -82,24 +88,24 @@ namespace Lab2
                 this.Money.Focus();
 
 
-                int score = Convert.ToInt32(Score.Text);
-                int money = Convert.ToInt32(Money.Text);
+                int userScore = Convert.ToInt32(Score.Text);
+                int userMoney = Convert.ToInt32(Money.Text);
 
 
                 RandomGeneratorwinorlose winorloseGerate = new RandomGeneratorwinorlose();
                 RandomGenerator scoreGenrate = new RandomGenerator();
-                int x = scoreGenrate.RandomNr();
-                int y = winorloseGerate.RandomWinorlose();
-                if (y == winorlose() && x == score)
+                int scoreGenerat = scoreGenrate.RandomNr();
+                int resultGenerat = winorloseGerate.RandomWinorlose();
+                if (resultGenerat == winorlose() && scoreGenerat == userScore)
                 {
-                    double earnmony = (0.75) * money + money;
-                    MessageBox.Show("You guessed right both the score and the winner ! Congratulation you won :" + " " + earnmony + " " + " $ ");
+                    double earnmony = (0.75) * userMoney + userMoney;
+                    MessageBox.Show("You guessed right both the score and the match result ! Congratulation you won :" + " " + earnmony + " " + " $ ");
                 }
-                else if (y == winorlose() && x != score)
+                else if (resultGenerat == winorlose() && scoreGenerat != userScore)
                 {
 
-                    double earnmoney1 = (0.25) * money + money;
-                    MessageBox.Show("You guessed right the winner ! Congargulation you won :" + " " + earnmoney1 + " " + " $ ");
+                    double earnmoney1 = (0.25) * userMoney + userMoney;
+                    MessageBox.Show("You guessed right the match result ! Congargulation you won :" + " " + earnmoney1 + " " + " $ ");
                 }
                 else
                 {
@@ -114,7 +120,7 @@ namespace Lab2
                 MessageBox.Show("Please enter all the informations", "Error", MessageBoxButton.OK);
                 this.Name.Focus();
             }
-            // clear the boxes
+            // clear the Textboxes
             this.Winorlose.Clear();
             this.Score.Clear();
             this.Money.Clear();
