@@ -6,6 +6,7 @@ using System.Threading.Tasks;
 
 namespace Lab2
 {
+    // Random class to return 0 or 1 ,so we can decide if the user har guisst right or wrong
     class RandomGeneratorwinorlose
     {
        public Random randomwinorlose1 = new Random();
