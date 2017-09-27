@@ -116,8 +116,8 @@ namespace Lab2
             }
             else
             {
-
-                MessageBox.Show("Please enter all the informations", "Error", MessageBoxButton.OK);
+                //Error Message 
+                MessageBox.Show("Please fill all the boxes ", "Error", MessageBoxButton.OK);
                 this.Name.Focus();
             }
             // clear the Textboxes
